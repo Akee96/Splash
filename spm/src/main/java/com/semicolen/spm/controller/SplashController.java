@@ -14,18 +14,24 @@ public class SplashController {
     @RequestMapping(value = "/" , method = RequestMethod.GET)
     public String index() {
 
-        return "Greetings from Spring Boot!";
+        return "index";
     }
 
-    @RequestMapping(value="/hello")
-    public ModelAndView goToHelloPage() {
-        ModelAndView view = new ModelAndView();
-        view.setViewName("hello"); //name of the jsp-file in the 'page' folder
+    @RequestMapping(value="/login")
+    public String login() {
+//        ModelAndView view = new ModelAndView();
+//        view.setViewName("hello"); //name of the jsp-file in the 'page' folder
+//
+//        String str = "MVC Spring is here!";
+//        view.addObject("message", str); //adding of str object as 'message' parameter
+//
+//        return view;
+        return "Login";
+    }
 
-        String str = "MVC Spring is here!";
-        view.addObject("message", str); //adding of str object as 'message' parameter
-
-        return view;
+    @RequestMapping(value="/register")
+    public String register(){
+        return "Register";
     }
 
     @GetMapping("/greeting")
