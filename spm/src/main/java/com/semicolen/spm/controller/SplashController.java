@@ -39,4 +39,9 @@ public class SplashController {
         model.addAttribute("name", name);
         return "greeting";
     }
+
+    @RequestMapping(value="/post-add")
+    public String PostAdd(){
+        return "post-add";
+    }
 }
