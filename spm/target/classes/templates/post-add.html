@@ -35,19 +35,36 @@
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!--===============================================================================================-->
+
+    <script type="text/javascript">
+        function previewFile() {
+            var preview = document.querySelector('img');
+            var file    = document.querySelector('input[type=file]').files[0];
+            var reader  = new FileReader();
+
+            reader.onloadend = function () {
+                preview.src = reader.result;
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "";
+            }
+        }
+    </script>
+
+
 </head>
 <body>
 <!-- header -->
 <div th:insert="components/Header :: header">  </div>
 
 
-
-
-
 <!-- Title Page -->
-<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m">
-    <h4 class="l-text2 t-center">
-        Post Add
+<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" >
+    <h4>
+        Post Your Add
     </h4>
 
 
@@ -56,21 +73,29 @@
 <!-- content page -->
 
 
-<div class="col-md-6 p-b-30" style="margin-top: 20px; width:50%;text-align:left"	>
+<div class="col-md-6 p-b-30" style="margin: auto; width:30%;text-align:left; background: #b3d7ff; "	>
 
         <form class="leave-comment" action="post-add" method="GET"  >
-
+            <label for="product-category" style="font-family: 'Arial Black'">Product Category</label>
             <div class="bo4 of-hidden size15 m-b-20">
                 <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="product-category" id="product-category" placeholder="Product Category">
             </div>
+            <label for="product-name" style="font-family: 'Arial Black'">Product Name</label>
             <div class="bo4 of-hidden size15 m-b-20">
                 <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="product-name" id="product-name" placeholder="Product Name">
             </div>
+            <label for="product-description" style="font-family: 'Arial Black'">Product Description</label>
             <div class="bo4 of-hidden size15 m-b-20">
                 <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="product-description" id="product-description" placeholder="Product Description">
             </div>
+            <label for="product-price" style="font-family: 'Arial Black'">Product Price</label>
             <div class="bo4 of-hidden size15 m-b-20">
                 <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="product-price" id="product-price" placeholder="Product Price (Ex - 1000.00)">
+            </div>
+            <label for="product-image" style="font-family: 'Arial Black'">Product Image</label>
+            <div class="bo4 of-hidden size15 m-b-20">
+                <input type="file" id="product-image" onchange="previewFile()">    <br>
+                <img src="" height="200" >
             </div>
 
             <div class="w-size25">
